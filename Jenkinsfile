@@ -1,10 +1,17 @@
- {
+node('built-in') 
+{ 
+     stage('continuousdownload') 
+    {
+         git 'https://github.com/selenium-saikrishna/maven.git'
+    }
+    stage('continuousbuild') 
+    {
           sh 'mvn package '
     }
      stage('continuousdeployment')
-    { 
-        sh '''scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.88.141:/var/lib/tomcat8/webapps/testenv.war'''
-    }
+     {
+     sh '''scp /home/ubuntu/.jenkins/workspace/scriptedpipeline/webapp/target/webapp.war ubuntu@172.31.88.141:/var/lib/tomcat8/webapps/testenv.war'''
+    } 
      
      stage('continuoustesting')
     {
