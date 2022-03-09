@@ -1,4 +1,11 @@
- {
+node('built-in') 
+{ 
+     stage('continuousdownload') 
+    {
+         git 'https://github.com/selenium-saikrishna/maven.git'
+    }
+    stage('continuousbuild') 
+    {
           sh 'mvn package '
     }
      stage('continuousdeployment')
@@ -19,3 +26,4 @@
     }
           
 }
+
